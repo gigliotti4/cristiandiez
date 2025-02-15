@@ -1,0 +1,138 @@
+.bg_red{
+    background-color: #E10915;
+    line-height:40px
+}
+.link_encabezado{
+    color:white;
+}
+.link_encabezado:hover{
+    color:white;
+}
+.link_red:hover{
+    text-decoration: none;
+    color:white;
+}
+.link_red{
+    color: white;
+}
+
+.icono_redes{
+    color: #E10915;
+    font-size: 20px;
+}
+.icono_redes:hover{
+    color: #E10915;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.titulo__pie{
+    font-family: 'Montserrat-SemiBold';
+    color:#E10915;
+}
+
+.link_pie{
+    color: #716F6E;
+    font-family: 'Montserrat', sans-serif;
+    font-size:14px;
+    margin-top:30px
+
+}
+.link_pie:hover{
+    text-decoration: none;
+    color:#E10915;
+}
+
+.link_contacto{
+    font-family: 'Montserrat', sans-serif;
+    color: #716F6E;
+    font-size: 15px;
+}
+.link_contacto:hover{
+    color: #716F6E;
+}
+.encabezado{
+    height:40px;
+}
+@media (max-width:525px){
+    .encabezado{
+        height: 80px;
+    }
+}
+.navbar-nav .nav-link{
+   
+   font-size: 14px;
+   font-family:'Montserrat-SemiBold';
+   color: #E10915 !important;
+   text-transform: uppercase;
+}
+.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
+   
+   border-bottom: 4px solid #E10915;
+}
+.enlace_pie{
+    color: #716F6E;
+    font-family: 'Montserrat', sans-serif;
+    font-size:14px;
+}
+.enlace_pie:hover{
+    color: #716F6E;
+}
+.boton_buscar:hover{
+    color:white;
+    text-decoration: none;
+}
+.boton_buscar{
+    color:white;
+}
+
+@media (min-width:1367px){
+    .menu_izquierdo{
+        padding-left: 180px;
+    }
+    .menu_derecho{
+       padding-right: 180px;
+    }
+}
+@media (max-width:1366px){
+    .menu_izquierdo{
+        padding-left: 80px;
+    }
+    .menu_derecho{
+       padding-right: 80px;
+    }
+}
+ @media(max-width:400px){
+.menu_izquierdo{
+        padding-left: 0px;
+    }
+}
+.contenedor_lupa{
+    display: flex;
+    align-items: stretch;
+}
+
+
+.custom-search {
+    border: none; /* Elimina los bordes por defecto */
+    border-bottom: 2px solid #fff; /* Borde inferior */
+    background: transparent; /* Fondo transparente */
+    color: #000; /* Color del texto normal */
+    padding-left: 0; /* Elimina el relleno a la izquierda */
+    padding-right: 0; /* Elimina el relleno a la derecha */
+    outline: none; /* Elimina el contorno cuando está seleccionado */
+   
+    /* Opcionalmente, puedes añadir un efecto al enfoque */
+    transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.custom-search::placeholder {
+    color: white; /* Placeholder en blanco */
+}
+
+.custom-search:focus {
+    border-bottom-color: #E10915; /* Color rojo en el borde inferior cuando está enfocado */
+    background-color: #E10915; /* Fondo rojo cuando está enfocado */
+    color: white; /* Texto blanco cuando está enfocado */
+}
+
