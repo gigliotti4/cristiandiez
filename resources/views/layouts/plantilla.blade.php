@@ -306,6 +306,12 @@
                 </div>
             </div>
         </div>
+        @foreach ($contactos as $item)
+        @if($item->dato=="telefono")
+        <a href="https://api.whatsapp.com/send?phone={{$item->texto}}" class="whatsapp" target="_blank"> 
+        <i class="fab fa-whatsapp whatsapp-icon text-white mt-3" aria-hidden="true"></i></a>
+        @endif
+        @endforeach
       </footer>
 
     <!-- Optional JavaScript -->
@@ -360,8 +366,8 @@
     }
 
     // Inicializar sliders
-    initializeSlick('.autoplay', 4, 1, 3000);
-    initializeSlick('.autoplay-products', 4, 4, 300);
+    initializeSlick('.autoplay', 4, 1, 1000);
+    initializeSlick('.autoplay-products', 4, 1, 1000);
 
     // Mostrar dropdown en hover
     $('.nav-item.dropdown').hover(

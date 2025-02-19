@@ -142,11 +142,11 @@
 </style>
 
 <div class="container my-5">
-    <div class="text-center titulo__seccion" data-aos="fade-up">
+    <div class="text-start titulo__seccion" data-aos="fade-up">
                 Nuestros Categorias
-                <div class="mx-auto mt-2 border__secciones"></div>
+                <div class=" mt-2 border__secciones"></div>
             </div>
-    <div class="row justify-content-center">
+    <div class="row justify-content-start">
         @foreach ($categorias as $index => $categoria)
             <div class="col-md-6 col-10 col-sm-12 mt-5" data-aos="fade-up" data-aos-delay="{{ ($index % 4) * 100 }}">
                 <div class="category-container">
@@ -174,6 +174,40 @@
 
 
 
+<div class="container">
+<div class="text-start titulo__seccion" data-aos="fade-up">
+                Nuestros Productos
+                <div class=" mt-2 border__secciones"></div>
+            </div>
+    <div class="row autoplay-products">
+        @foreach ($productos as $prod)
+            <div class="col-md-3 col-12 col-sm-12 mt-5 mx-md-0 mx-auto">
+                <div class="contenedor">
+                    <div class="image-wrapper">
+                        <div class="image" 
+                            style="background-image: url({{url('/')}}/images/productos/{{$prod->imagen}});
+                                background-size: contain;
+                                background-repeat: no-repeat;
+                                background-position: center;
+                                height: 303px;
+                                width: 100%;">
+
+                            <!-- La letra "A" sobre toda la imagen -->
+                            <a href="{{route('producto', $prod->id)}}" class="overlay">
+                                <a href="{{route('producto', $prod->id)}}" class="text"></a>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mt-3 categorias__titulo">
+                        <a href="{{route('producto', $prod->id)}}" style="color: #E10915; text-transform: uppercase; font-family: 'Montserrat-SemiBold'; font-size: 17px;">
+                            {{$prod->titulo}}
+                        </a>
+                    </div>   
+                </div>
+            </div>
+        @endforeach
+    </div>
+</div>
 
 
     <!--Presupuesto-->
@@ -188,10 +222,7 @@
             filter: brightness(0.5);
         "></div>
 
-        <div class="col-md-12 py-md-5 text-center" style="color: white" 
-            data-aos="fade-down" 
-            data-aos-duration="800" 
-            data-aos-delay="300">
+        <div class="col-md-12 py-md-5 text-center" style="color: white">
             
             {!!$seccionPresupuesto->texto!!}
 
@@ -205,11 +236,11 @@
 
     <!--Clientes-->
     <div class="container my-5">
-            <div class="text-center titulo__seccion" data-aos="fade-up">
+            <div class="text-start titulo__seccion" >
                 Nuestros Clientes
-                <div class="mx-auto mt-2 border__secciones"></div>
+                <div class=" mt-2 border__secciones"></div>
             </div>
-        <div class="autoplay my-5" data-aos="fade-up"  data-aos-delay="200">
+        <div class="autoplay my-5"   >
             @foreach ($clientes as $item)
             <div class="text-center" style="min-height:80px;
             min-width:175px;
