@@ -31,9 +31,10 @@ class PageController extends Controller
         $iconos = Iconos::all();
         $categorias = Categorias::orderby('orden', "ASC")->take(8)->get();
         $seccionPresupuesto = SeccionPresupuesto::all()->first();
+        $productos = Producto::orderby('orden', "ASC")->get();
         $clientes = Cliente::orderby('orden', "ASC")->get();
         $metadatos = Metadato::where('seccion', 'inicio')->first();
-        return view('inicio', compact('contactos', 'logosup', 'logoinf', 'sliders', 'iconos', 'categorias', 'seccionPresupuesto', 'clientes', 'metadatos'));
+        return view('inicio', compact('contactos', 'logosup', 'logoinf', 'sliders', 'iconos', 'categorias', 'seccionPresupuesto', 'clientes', 'metadatos', 'productos'));
     }
 
     public function empresa()

@@ -1,56 +1,50 @@
 @extends('layouts.plantilla')
 @section('contenido')
     
-     <!--Sliders-->
-     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-           @foreach ($sliders as $slider)
-               @if($loop->first)
-               <div class="carousel-item active">
-                <div style=" 
-                    background-image:url('{{url('/')}}/images/sliders/{{$slider->imagen}}');
-                    background-size:cover;
-                    background-repeat:no-repeat;
-                    height:350px;
-                    ">
-                    </div>
-                    <div class="d-none d-sm-block d-md-block mx-md-auto" style="position: absolute;bottom: 50%;left:25%">
-                        @if($slider->texto!=null || $slider->texto!="" || $slider->texto=="<p><br></p>")
-                        <div style="background-color:rgba(83, 83, 83, 0.6);">
-                            {!!$slider->texto!!}
-                        </div>
-                        @endif
-                    </div>
-              </div>
-               @else 
-               <div class="carousel-item">
-               <div style=" 
-                background-image:url('{{url('/')}}/images/sliders/{{$slider->imagen}}');
-                background-size:cover;
-                background-repeat:no-repeat;
-                height:350px;
-                ">
+  <!-- Sliders -->
+<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" data-interval="2000">
+    
+    <!-- Indicadores -->
+    <ol class="carousel-indicators">
+        @foreach ($sliders as $index => $slider)
+            <li data-target="#carouselExampleCaptions" data-slide-to="{{ $index }}" class="{{ $loop->first ? 'active' : '' }}"></li>
+        @endforeach
+    </ol>
+
+    <div class="carousel-inner">
+        @foreach ($sliders as $slider)
+            <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+                <div style="
+                    background-image: url('{{ url('/') }}/images/sliders/{{ $slider->imagen }}');
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    height: 550px;">
                 </div>
-                <div class="carousel-caption d-none d-md-block">
-                        @if($slider->texto!=null || $slider->texto!="" || $slider->texto=="<p><br></p>")
-                        <div style="background-color:rgba(83, 83, 83, 0.6);">
-                            {!!$slider->texto!!}
+                @if($slider->texto && $slider->texto !== "<p><br></p>")
+                    <div class="carousel-caption d-none d-md-block mx-md-auto" style="bottom: 40%">
+                        <div style="background-color: rgba(83, 83, 83, 0.6);">
+                            {!! $slider->texto !!}
                         </div>
-                        @endif
-                </div>
-              </div>
-               @endif
-           @endforeach 
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-            <i class="fas fa-arrow-circle-left fa-lg" style="color: white"></i>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-            <i class="fas fa-arrow-circle-right fa-lg" style="color: white"></i>
-          <span class="sr-only">Next</span>
-        </a>
+                    </div>
+                @endif
+            </div>
+        @endforeach
     </div>
+
+    <!-- Controles de navegación -->
+    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+        <i class="fas fa-arrow-circle-left fa-lg" style="color: white"></i>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+        <i class="fas fa-arrow-circle-right fa-lg" style="color: white"></i>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+
+
     <!--Textos-->
     <div class="container my-5">
         <div class="row">

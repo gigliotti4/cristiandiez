@@ -59,7 +59,7 @@
                     <div class="col-md-12 col-12">
                         <textarea name="mensaje" placeholder="Mensaje" rows="3" class="form-control"></textarea>
                     </div>
-                    <div class="col-md-6 col-12 mt-2">
+                    <div class="col-md-6 col-12 mt-3">
                         <div class="input-group mb-3">
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" name="file" id="archivo" placeholder="Elige">
@@ -78,10 +78,13 @@
                                               @enderror
                         </div>
                     </div>
-                    <div class="col-md-6 d-flex justify-content-end">
-                        <button type="submit" class="btn px-md-3" style="background-color: #E10915;color:white">
-                            <span class="spinner-border spinner-border-sm d-none"> </span> <span class="btn-text"> Solicitar presupuesto</span>
-                        </button>
+                    <div class="col-md-6 ">
+                        <div class="float-right">
+
+                            <button type="submit" class="btn boton_presupuesto px-md-3" style="">
+                                <span class="spinner-border spinner-border-sm d-none"> </span> <span class="btn-text"> Solicitar presupuesto</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">

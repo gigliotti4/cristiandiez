@@ -16,11 +16,11 @@
 </div>
 
 <div class="container my-5">
-    <div class="text-center titulo__seccion" data-aos="fade-up">
+    <div class="text-left titulo__seccion" data-aos="fade-up">
          {{ $categoriaSeleccionada->titulo }}
-        <div class="mx-auto mt-2 border__secciones"></div>
+        <div class=" mt-2 border__secciones"></div>
     </div>
-    <div class="row justify-content-center ">
+    <div class="row justify-content-start ">
         @foreach ($subcategorias as $index => $subcategoria)
             <div class="col-md-3 col-10 col-sm-12 mt-5" data-aos="fade-up" data-aos-delay="{{ ($index % 4) * 100 }}">
                 <div class="contenedor">

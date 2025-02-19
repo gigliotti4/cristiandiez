@@ -116,10 +116,11 @@
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.4s ease-in-out, transform 0.3s ease;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+
 }
 
 .boton_presupuesto:hover {
+    text-decoration: none;
     background-color: white; /* Un tono más oscuro en hover */
     color: #c10812;
     border: 1px solid #E10915;
@@ -130,87 +131,28 @@
     transform: scale(0.98); /* Efecto de presión */
 }
 
-
-   /* Dots */
-.slick-dotted.slick-slider {
-    margin-bottom: 30px;
+  /* Estilo para las flechas de navegación */
+  ul.slick-dots{
+    margin-top: 20px;
+    bottom: -30px !important;
 }
-
-.slick-dots {
-    position: absolute;
-    bottom: -25px;
-    display: block;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    text-align: center;
+ul.slick-dots li{
+    margin-left: 5px;
+    margin-right: 5px;
 }
-
-.slick-dots li {
-    position: relative;
-    display: inline-block;
-    width: 30px;  /* Aumentar tamaño */
-    height: 30px; /* Aumentar tamaño */
-    margin: 0 10px;  /* Espaciado entre los dots */
-    padding: 0;
-    cursor: pointer;
+ul.slick-dots li.slick-active button{
+    background-color: #b42b2b !important;
 }
-
-.slick-dots li button {
-    font-size: 0;
-    line-height: 0;
-    display: block;
-    width: 30px; /* Aumentar tamaño */
-    height: 30px; /* Aumentar tamaño */
-    padding: 0;
-    cursor: pointer;
-    color: transparent;
-    border: 0;
-    outline: none;
-    background: transparent;
-    border-radius: 50%;  /* Redondear los dots */
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones suaves */
+ul.slick-dots li button{
+    width: 10px !important;
+    height: 10px !important;
+    border-radius: 50% !important;
+    padding: 0px !important;
+    background-color: #ADAFB2;
 }
-
-.slick-dots li button:hover,
-.slick-dots li button:focus {
-    outline: none;
-}
-
-.slick-dots li button:hover:before,
-.slick-dots li button:focus:before {
-    opacity: 1;
-}
-
-.slick-dots li button:before {
-    font-family: 'slick';
-    font-size: 10px;  /* Tamaño de los puntos dentro */
-    line-height: 30px; /* Alineación vertical */
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 30px;
-    height: 30px;
-    content: '•';
-    text-align: center;
-    opacity: 0.5;
-    color: #E10915;  /* Rojo */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    transition: opacity 0.3s ease, transform 0.3s ease; /* Transición para el color */
-}
-
-.slick-dots li.slick-active button:before {
-    opacity: 1;
-    color: #E10915; /* Rojo activo */
-    transform: scale(1.2); /* Agrandar el dot cuando esté activo */
-}
-
-.slick-dots li button:hover:before {
-    opacity: 1;
-    color: #E10915; /* Rojo cuando se pase por encima */
-    transform: scale(1.3); /* Agranda el dot al pasar el cursor */
+ul.slick-dots li button:before{
+    content: '' !important;
+    display: none !important;
 }
 
 
@@ -350,6 +292,7 @@
     text-transform: uppercase;
      font-family: 'Montserrat', sans-serif !important;
     color: #DA241D;
+    font-weight: 600;
     font-size: 20px;
 }
 .producto-texto {
@@ -393,4 +336,54 @@
     color: #6E6F71;
     font-weight: 600;
     font-size: 14px;
+}
+
+
+.form-control {
+    border: 1px solid #d3d4d6;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    color: #6E6F71;
+}
+
+.form-control:focus{
+    border-color: #FF6600 !important;
+    box-shadow: 0 0 0 0.25rem rgba(234, 111, 140, 25%);
+}
+
+
+.form-label{
+    font-family: 'Roboto', sans-serif;
+}
+.custom-file-button input[type=file]::-webkit-file-upload-button {
+    display: none;
+}
+.custom-file-button input[type=file]::file-selector-button {
+    display: none;
+}
+/* input[type="file"] {
+display: none;
+} */
+.custom-file-button:hover label {
+    cursor: pointer;
+}
+
+#inputGroupFile{
+    /*border-radius: 6px;*/
+    border-top-left-radius: 6px !important;
+    border-bottom-left-radius: 6px !important;
+    border-left: 1px solid #E6E6E6 !important;
+    border-right: none !important;
+    border-top-right-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 40px;
+    /* identical to box height, or 167% */
+
+    
+    color: #D80007;
 }

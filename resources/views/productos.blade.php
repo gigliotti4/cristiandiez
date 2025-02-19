@@ -16,11 +16,11 @@
 </div>
 
 <div class="container my-5">
-    <div class="text-center titulo__seccion" data-aos="fade-up">
+    <div class="text-start titulo__seccion" data-aos="fade-up">
         {{ $subcategoriaSeleccionada->titulo }}
-        <div class="mx-auto mt-2 border__secciones"></div>
+        <div class=" mt-2 border__secciones"></div>
     </div>
-    <div class="row justify-content-center ">
+    <div class="row justify-content-start ">
     @if($productos->isEmpty())
         <div class="display-4 my-5">
             No hay productos

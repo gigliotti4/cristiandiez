@@ -3,9 +3,7 @@
   <head>
     <script src="{{asset('js/jquery/jquery.js')}}"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -19,8 +17,8 @@
     <link rel="stylesheet" href="{{asset('css/page.css')}}">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
     <link  href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
@@ -323,48 +321,59 @@
 
 <script>
   $(document).ready(function(){
-    $('.autoplay').slick({
-      dots: true,
-      infinite: true, // Cambiado a true para que no se detenga nunca
-      arrows: true,
-      speed: 300,
-      slidesToShow: 4,
-      slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 3000, // 3 segundos
-      responsive: [
-        {
-          breakpoint: 1024,
-          settings: {
-            slidesToShow: 3,
-            slidesToScroll: 3,
-            infinite: true,
-            dots: true
+    function initializeSlick(selector, slidesToShow, slidesToScroll, autoplaySpeed = 3000) {
+      $(selector).slick({
+        dots: true,
+        infinite: true,
+        arrows: true,
+        speed: 300,
+        slidesToShow: slidesToShow,
+        slidesToScroll: slidesToScroll,
+        autoplay: true,
+        autoplaySpeed: autoplaySpeed,
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 3,
+              dots: true
+            }
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              autoplaySpeed: selector === '.autoplay-products' ? 500 : autoplaySpeed
+            }
           }
-        },
-        {
-          breakpoint: 600,
-          settings: {
-            slidesToShow: 2,
-            slidesToScroll: 2
-          }
-        },
-        {
-          breakpoint: 480,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1
-          }
-        }
-      ]
-    });
+        ]
+      });
+    }
 
-    $('.nav-item.dropdown').hover(function() {
-      $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
-    }, function() {
-      $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
-    });
+    // Inicializar sliders
+    initializeSlick('.autoplay', 4, 1, 3000);
+    initializeSlick('.autoplay-products', 4, 4, 300);
+
+    // Mostrar dropdown en hover
+    $('.nav-item.dropdown').hover(
+      function() {
+        $(this).find('.dropdown-menu').stop(true, true).delay(100).fadeIn(500);
+      }, 
+      function() {
+        $(this).find('.dropdown-menu').stop(true, true).delay(100).fadeOut(500);
+      }
+    );
   });
 </script>
+
   </body>
 </html>

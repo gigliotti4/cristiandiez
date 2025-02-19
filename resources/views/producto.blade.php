@@ -71,33 +71,36 @@
     <div class="row">
         <!-- Fotorama Galería de imágenes -->
         <div class="col-md-8 col-lg-8" style="padding-right: 0px">
-            <div class="fotorama " data-nav="thumbs" data-width="100%">
+            <div class="fotorama " data-nav="thumbs" data-width="100%" data-height="500">
                 <img class="" src="{{asset('images/productos/'.$producto->imagen)}}">
                 <img class="" src="{{asset('images/productos/'.$producto->imagen_dos)}}">
             </div>
         </div>
 
         <!-- Información del producto -->
-        <div class="col-md-4 col-lg-4">
-            <div class="producto-titulo">{{ $producto->titulo }}</div>
-            <div class="producto-texto my-4">{!! $producto->texto !!}</div>
-            
-            @if($producto->fichatecnica != null)
-                <div class="d-flex justify-content-md-start justify-content-lg-start">
-                    <button class="btn btn-outline-light producto-btn-ficha">
-                        <a class="link_ficha" href="{{asset('fichas/'.$producto->fichatecnica)}}" download="">Ficha Técnica
-                            <i class="fas fa-file-download ml-2"></i>
-                        </a>
-                    </button>
-                    <button class="btn ml-md-3 producto-btn-presupuesto">
-                        <a class="link_presupuesto" href="{{route('presupuesto')}}">Solicitar Presupuesto</a>
-                    </button>
-                </div>
-            @else
-                <button class="btn producto-btn-presupuesto">
-                    <a class="link_presupuesto" href="{{route('presupuesto')}}">Solicitar Presupuesto</a>
-                </button>
-            @endif
+        <div class="col-md-4 col-lg-4 d-flex flex-column">
+            <div>
+                <div class="producto-titulo">{{ $producto->titulo }}</div>
+                <div class="producto-texto my-4">{!! $producto->texto !!}</div>
+            </div>
+            <div class="mt-auto">
+                @if($producto->fichatecnica != null)
+                    <div class="d-flex justify-content-md-start justify-content-lg-start">
+                        <button class="btn btn-outline-light producto-btn-ficha">
+                            <a class="link_ficha" href="{{asset('fichas/'.$producto->fichatecnica)}}" download="">Ficha Técnica
+                                <i class="fas fa-file-download ml-2"></i>
+                            </a>
+                        </button>
+                    
+                            <a class="boton_presupuesto" href="{{route('presupuesto')}}">Solicitar Presupuesto</a>
+                     
+                    </div>
+                @else
+           
+                        <a class="boton_presupuesto" href="{{route('presupuesto')}}">Solicitar Presupuesto</a>
+                
+                @endif
+            </div>
         </div>
 
         <!-- Ventajas -->

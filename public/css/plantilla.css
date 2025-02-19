@@ -114,11 +114,11 @@
 
 
 .custom-search {
-    border: none; /* Elimina los bordes por defecto */
-    border-bottom: 2px solid #fff; /* Borde inferior */
+    border: none !important; /* Elimina los bordes por defecto */
+    border-bottom: 2px solid #fff !important; /* Borde inferior */
     background: transparent; /* Fondo transparente */
-    color: #000; /* Color del texto normal */
-    padding-left: 0; /* Elimina el relleno a la izquierda */
+    color: #fff !important; /* Color del texto normal */
+    padding-left: 10; /* Elimina el relleno a la izquierda */
     padding-right: 0; /* Elimina el relleno a la derecha */
     outline: none; /* Elimina el contorno cuando está seleccionado */
    
@@ -134,5 +134,25 @@
     border-bottom-color: #E10915; /* Color rojo en el borde inferior cuando está enfocado */
     background-color: #E10915; /* Fondo rojo cuando está enfocado */
     color: white; /* Texto blanco cuando está enfocado */
+    box-shadow: 0 0 5px #E10915; /* Agrega sombra en el focus */
 }
 
+
+.dropdown-item.active, .dropdown-item:active{
+    background-color: #E10915 !important;
+}
+
+
+.whatsapp {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #25d366;
+    color: #FFF !important;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    z-index: 100;
+}

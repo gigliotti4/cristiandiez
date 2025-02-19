@@ -94,7 +94,7 @@
                                               @enderror
                         </div>
                     <div class="col text-center">
-                        <button class="btn py-2 px-5 float-right" type="submit" style="background: #D5290D; color:white;font-family:'Montserrat-SemiBold';font-size:11px">
+                        <button class="btn boton_presupuesto py-2 px-5 float-right " type="submit" style="">
                         <span class="spinner-border spinner-border-sm d-none"> </span>
                         <span class="btn-text">    ENVIAR</span>
                         </button>
