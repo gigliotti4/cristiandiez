@@ -27,7 +27,7 @@
         </div>
     @else 
         @foreach ($productos as $prod)
-            <div class="col-md-3 col-10 col-sm-12 mt-5 mx-md-0 mx-auto">
+            <div class="col-md-3 col-12 col-sm-12 mt-5 mx-md-0 mx-auto">
                 <div class="contenedor">
                     <div class="image-wrapper">
                         <div class=" image" 

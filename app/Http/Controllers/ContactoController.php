@@ -9,6 +9,7 @@ use App\Mail\Consulta;
 use App\Mail\Presupuesto;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Http;
 
 class ContactoController extends Controller
 {

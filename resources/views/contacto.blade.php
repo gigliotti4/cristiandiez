@@ -128,6 +128,9 @@
                 },
                 mensaje: {
                     required: true
+                },
+                'g-recaptcha-response': {
+                    required: true
                 }
             },
             messages: {
@@ -147,6 +150,9 @@
                 },
                 mensaje: {
                     required: "Este campo es necesario"
+                },
+                'g-recaptcha-response': {
+                    required: "Por favor complete el captcha"
                 }
             },
             submitHandler: function(){

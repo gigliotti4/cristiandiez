@@ -22,7 +22,7 @@
     </div>
     <div class="row justify-content-start ">
         @foreach ($subcategorias as $index => $subcategoria)
-            <div class="col-md-3 col-10 col-sm-12 mt-5" data-aos="fade-up" data-aos-delay="{{ ($index % 4) * 100 }}">
+            <div class="col-md-3 col-12 col-sm-12 mt-5" data-aos="fade-up" data-aos-delay="{{ ($index % 4) * 100 }}">
                 <div class="contenedor">
                     <!-- Contenedor de imagen con overflow para evitar que el zoom desborde -->
                     <div class="image-wrapper">

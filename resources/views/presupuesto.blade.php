@@ -108,6 +108,9 @@
                 telefono: {
                     required: true,
                     digits: true,
+                },
+                'g-recaptcha-response': {
+                    required: true
                 }
             },
             messages: {
@@ -121,6 +124,9 @@
                 telefono: {
                     required: "Por favor indique su telefono",
                     digits: "Ingrese solo numeros"
+                },
+                'g-recaptcha-response': {
+                    required: "Por favor complete el captcha"
                 }
             },
             submitHandler: function(){
