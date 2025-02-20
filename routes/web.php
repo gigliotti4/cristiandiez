@@ -41,10 +41,10 @@ Route::get('producto/{id}', [PageController::class, 'viewProducto'])->name('prod
 Route::get('descarga', [PageController::class, 'viewDescargas'])->name('descargas');
 Route::get('calidad', [PageController::class, 'viewCalidad'])->name('calidad');
 
+Route::post('/contacto/enviar', [App\Http\Controllers\ContactoController::class, 'enviarConsulta'])->name('enviarConsulta');
+
 Auth::routes();
-Route::get('adm',function(){
-    return redirect('login');
-});
+Route::get('adm', 'AdminController@index');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::middleware(['auth'])->group(function(){
     //Inicio

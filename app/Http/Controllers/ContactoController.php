@@ -8,8 +8,6 @@ use App\Logos;
 use App\Mail\Consulta;
 use App\Mail\Presupuesto;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Http;
 
 class ContactoController extends Controller
 {
@@ -47,95 +45,74 @@ class ContactoController extends Controller
         }
         $icono->update($request->all());
     }
-
-    public function presupuesto(Request $request) {
+    public function presupuesto( Request $request ) {
         $rules = [
-            "nombre"  => "required|max:100",
-            "email"   => "required|email|max:150",
+            "nombre" => "required|max:100",
+            "email" => "required|email|max:150",
             "mensaje" => "required",
-            "file"    => "required|mimes:jpeg,png,jpg,gif,txt,doc,docx,xls,xlsx,pdf,zip,rar,7zip|max:2048",
-            "g-recaptcha-response" => "required"
+            "file" => "required|mimes:jpeg,png,jpg,gif,txt,doc,docx,xls,xlsx,pdf,zip,rar,7zip|max:2048"
         ];
-    
-        $validator = Validator::make($request->all(), $rules);
-    
-        if ($validator->fails()) {
-            return response()->json(["estado" => 0, "mssg" => "Validación incorrecta"]);
-        }
-    
-        // Validar reCAPTCHA
-        $recaptchaResponse = $request->input('g-recaptcha-response');
-        $recaptchaSecret = env('RECAPTCHA_SECRET');
-        $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
-            'secret'   => $recaptchaSecret,
-            'response' => $recaptchaResponse,
-            'remoteip' => $request->ip()
-        ]);
-    
-        $responseData = $response->json();
-        if (!$responseData['success']) {
-            return response()->json(["estado" => 0, "mssg" => "Captcha no verificado"]);
-        }
-    
-        // Procesar el archivo adjunto
-        $file = $request->file('file');
-        $dataRequest = $request->all();
-    
-        // Enviar correo
-        Mail::to('info@cristiandiez.com.ar')->send(new Presupuesto($dataRequest, $file));
-    
-        $obj = new \stdClass();
-        $obj->respuesta = count(Mail::failures()) > 0 ? false : true;
-    
-        return response()->json($obj);
+        // $validator = Validator::make($request->all(), $rules);
+        // if ($validator->fails())
+        //     return [ "estado" => 0 , "mssg" => "Validación incorrecta"];
+         $dataRequest = $request->all();
+        // unset( $dataRequest[ "_token" ] );
+        $file = isset($dataRequest["file"]) ? $request->file('file') : null;
+         //$email = $this->data->form[ "presupuesto" ];
+        // $captcha = $dataRequest[ "token" ];
+        // if(!$captcha){
+        //     return [ "estado" => 0 , "mssg" => "Captcha no verificado"];
+        //     exit;
+        // }
+        // $ip = $_SERVER['REMOTE_ADDR'];
+        // $url = 'https://www.google.com/recaptcha/api/siteverify';
+        // $data = array('secret' => $this->data->captcha[ 'private' ], 'response' => $captcha);
+        // $options = [
+        //     'http' => [
+        //         'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+        //         'method'  => 'POST',
+        //         'content' => http_build_query($data)
+        //     ]
+        // ];
+        // $context = stream_context_create($options);
+        // $response = file_get_contents($url, false, $context);
+        // $responseKeys = json_decode($response,true);
+        // if($responseKeys["success"]) {
+
+
+            Mail::to( 'info@cristiandiez.com.ar' )->send( new Presupuesto( $dataRequest , $file ) );
+            $obj= new \stdClass();
+            $obj->respuesta=false;
+            if (count(Mail::failures()) > 0){
+                $obj->respuesta=true;
+                return json_encode($obj);
+            }else{
+                return json_encode($obj);
+            }
+               
+        // } else {
+        //     return [ "estado" => 0 , "mssg" => "Error"];
+        // }
     }
+    public function enviarConsulta(Request $request){
     
-
-    public function enviarConsulta(Request $request) {
-        $rules = [
-            "nombre"  => "required",
-            "correo"  => "required|email",
-            "mensaje" => "required",
-            "apellido" => "required",
-            "telefono" => "required",
-            "g-recaptcha-response" => "required"
-        ];
-
-        $validator = Validator::make($request->all(), $rules);
-
-        if ($validator->fails()) {
-            return response()->json(["estado" => 0, "mssg" => "Validación incorrecta"]);
+        $usuario=new \stdClass();
+        $usuario->Nombre=$request->nombre;
+        $usuario->Email=$request->correo;
+        $usuario->Msg=$request->mensaje;
+        $usuario->Apellido=$request->apellido;
+        $usuario->Telefono=$request->telefono;
+        
+        
+        $mail=new Consulta($usuario);
+        $obj= new \stdClass();
+        $obj->respuesta=false;
+        Mail::to('gigliottilucas4@gmail.com')->send($mail);
+        if (count(Mail::failures()) > 0){
+            $obj->respuesta=true;
+            return json_encode($obj);
+        }else{
+            return json_encode($obj);
         }
-
-        // Validar reCAPTCHA
-        $recaptchaResponse = $request->input('g-recaptcha-response');
-        $recaptchaSecret = env('RECAPTCHA_SECRET');
-        $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
-            'secret'   => $recaptchaSecret,
-            'response' => $recaptchaResponse,
-            'remoteip' => $request->ip()
-        ]);
-
-        $responseData = $response->json();
-        if (!$responseData['success']) {
-            return response()->json(["estado" => 0, "mssg" => "Captcha no verificado"]);
-        }
-
-        // Procesar la consulta
-        $usuario = new \stdClass();
-        $usuario->Nombre = $request->nombre;
-        $usuario->Email = $request->correo;
-        $usuario->Msg = $request->mensaje;
-        $usuario->Apellido = $request->apellido;
-        $usuario->Telefono = $request->telefono;
-
-        $mail = new Consulta($usuario);
-        Mail::to('info@cristiandiez.com.ar')->send($mail);
-
-        $obj = new \stdClass();
-        $obj->respuesta = count(Mail::failures()) > 0 ? false : true;
-
-        return response()->json($obj);
     }
-
 }
