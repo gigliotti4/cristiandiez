@@ -23,6 +23,9 @@ class SlidersController extends Controller
        return $slider;
    }
    public function AgregarSlider(Request $request){
+       $request->validate([
+           'imagen' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+       ]);
        $slider= new Sliders();
        $slider->orden=$request->orden;
        $slider->texto=$request->texto;
@@ -40,6 +43,9 @@ class SlidersController extends Controller
        $slider->delete();
    }
    public function ActualizarSlider(Request $request,$id){
+       $request->validate([
+           'imagen' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+       ]);
        $slider= Sliders::findorFail($id);
        if($archivo=$request->file('editar-imagen')){
            $nombre=$archivo->getClientOriginalName();

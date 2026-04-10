@@ -16,6 +16,9 @@ class InicioController extends Controller
         return view('admin.inicio.editarinicio',compact('iconos','seccionPresupuesto','clientes'));
     }
     public function actualizarIcono(Request $request,$id){
+        $request->validate([
+            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
         $icono=Iconos::find($id);
         if($archivo=$request->file('iconoe')){
             $nombre=$archivo->getClientOriginalName();
@@ -26,6 +29,9 @@ class InicioController extends Controller
         return back()->with('success', 'Icono editado.');
     }
     public function editarSeccionPresupuesto(Request $request){
+        $request->validate([
+            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
         $seccionPresupuesto=SeccionPresupuesto::all()->first();
         if($archivo=$request->file('imagenPresupuesto')){
             $nombre="img_presupuesto".".".$archivo->getClientOriginalExtension();

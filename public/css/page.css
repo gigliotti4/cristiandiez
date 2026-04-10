@@ -131,29 +131,7 @@
     transform: scale(0.98); /* Efecto de presión */
 }
 
-  /* Estilo para las flechas de navegación */
-  ul.slick-dots{
-    margin-top: 20px;
-    bottom: -30px !important;
-}
-ul.slick-dots li{
-    margin-left: 5px;
-    margin-right: 5px;
-}
-ul.slick-dots li.slick-active button{
-    background-color: #b42b2b !important;
-}
-ul.slick-dots li button{
-    width: 10px !important;
-    height: 10px !important;
-    border-radius: 50% !important;
-    padding: 0px !important;
-    background-color: #ADAFB2;
-}
-ul.slick-dots li button:before{
-    content: '' !important;
-    display: none !important;
-}
+
 
 
 #accordion .panel {

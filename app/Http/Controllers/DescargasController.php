@@ -15,6 +15,10 @@ class DescargasController extends Controller
         return view('admin.descargas.editardescargas',compact('descargas','tipos_descarga'));
     }
     public function agregarDescarga(Request $request){
+        $request->validate([
+            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'archivo' => 'required|mimes:pdf|max:5120', // Máximo 5MB
+        ]);
         $descarga = new Descarga($request->all());
         if($archivo=$request->file('imagen')){
             $nombre="imgdesc_".$request->orden.".".$archivo->getClientOriginalExtension();
@@ -33,6 +37,10 @@ class DescargasController extends Controller
         return $descarga;
     }
     public function actualizarDescarga(Request $request,$id){
+        $request->validate([
+            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'archivo' => 'required|mimes:pdf|max:5120', // Máximo 5MB
+        ]);
         $descarga=Descarga::find($id);
         if($archivo=$request->file('imagene')){
             $nombre="imgdesc_".$request->orden.".".$archivo->getClientOriginalExtension();

@@ -1,0 +1,58 @@
+/* Estilos personalizados para flechas del carrusel */
+.slick-prev,
+.slick-next {
+    width: 40px;
+    height: 40px;
+    background-color: #E10915;
+    border-radius: 50%;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.slick-prev:hover,
+.slick-next:hover {
+    background-color: #b10712;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.slick-prev:before,
+.slick-next:before {
+    font-family: 'FontAwesome';
+    font-size: 20px;
+    line-height: 1;
+    opacity: 1;
+    color: white;
+}
+
+.slick-prev:before {
+    content: '\f104'; /* Código del ícono de flecha izquierda de FontAwesome */
+}
+
+.slick-next:before {
+    content: '\f105'; /* Código del ícono de flecha derecha de FontAwesome */
+}
+
+.slick-prev {
+    left: -50px;
+}
+
+.slick-next {
+    right: -50px;
+}
+
+/* Estilos responsivos */
+@media (max-width: 767px) {
+    .slick-prev {
+        left: -20px;
+    }
+    
+    .slick-next {
+        right: -20px;
+    }
+    
+    .slick-prev,
+    .slick-next {
+        width: 30px;
+        height: 30px;
+    }
+}

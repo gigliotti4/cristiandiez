@@ -26,6 +26,9 @@ class ProductosController extends Controller
         return $Categoria;
     }
     public function agregarCategoria(Request $request){
+        $request->validate([
+            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
         $Categoria= new Categorias();
         $Categoria->orden=$request->orden;
         $Categoria->titulo=$request->titulo;
@@ -38,6 +41,9 @@ class ProductosController extends Controller
         $Categoria->save();
     }
     public function actualizarCategoria(Request $request,$id){
+        $request->validate([
+            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
         $Categoria=Categorias::findorFail($id);
         if($archivo=$request->file('imagenedit')){
             $nombre="imgcat_".$request->orden.".".$archivo->getClientOriginalExtension();
@@ -51,6 +57,9 @@ class ProductosController extends Controller
         $Categoria->delete();
     }
     public function agregarSubCategoria(Request $request){
+        $request->validate([
+            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
         $subcategoria= new SubCategoria($request->all());
         if($archivo=$request->file('imagensub')){
             $nombre=$archivo->getClientOriginalName();
@@ -64,6 +73,9 @@ class ProductosController extends Controller
         return $subcategoria;
     }
     public function actualizarSubCategoria(Request $request,$id){
+        $request->validate([
+            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
         $subcategoria=SubCategoria::find($id);
         if($archivo=$request->file('imagensubedit')){
             $nombre=$archivo->getClientOriginalName();
@@ -85,6 +97,9 @@ class ProductosController extends Controller
         return view('admin.productos.editarproductos',compact('productos','categorias','subcategorias','ventajas'));
     }
     public function agregarVentaja(Request $request){
+        $request->validate([
+            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
         $ventaja= new Ventaja();
         $ventaja->titulo=$request->titulo;
         if($archivo=$request->file('imagenVentaja')){
@@ -99,8 +114,11 @@ class ProductosController extends Controller
         return $ventaja;
     }
     public function actualizarVentaja(Request $request,$id){
+        $request->validate([
+            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
         $ventaja=Ventaja::find($id);
-        if($archivo=$request->file('imagenVentajae')){
+        if($archivo=$request->file('imagenVentaja')){
             $nombre=$archivo->getClientOriginalName();
             $archivo->move('images/productos',$nombre);
             $ventaja->imagen=$nombre;
@@ -112,6 +130,11 @@ class ProductosController extends Controller
         $ventaja->delete();
     }
     public function agregarProducto(Request $request){
+        $request->validate([
+            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'img_dos' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'fichatecnica' => 'required|mimes:pdf|max:5120', // Máximo 5MB
+        ]);
         $producto=new Producto($request->all());
         if($archivo=$request->file('img')){
             $nombre="imgprod_".$request->orden.".".$archivo->getClientOriginalExtension();
@@ -135,18 +158,23 @@ class ProductosController extends Controller
         return $producto;
     }
     public function actualizarProducto(Request $request,$id){
+        $request->validate([
+            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'img_dos' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'fichatecnica' => 'required|mimes:pdf|max:5120', // Máximo 5MB
+        ]);
         $producto=Producto::find($id);
-        if($archivo=$request->file('imge')){
+        if($archivo=$request->file('imagen')){
              $nombre="imgprod_".$request->orden.".".$archivo->getClientOriginalExtension();
             $archivo->move('images/productos',$nombre);
             $producto->imagen=$nombre;
         }
-        if($archivo=$request->file('img_dose')){
+        if($archivo=$request->file('img_dos')){
             $nombre=$archivo->getClientOriginalName();
             $archivo->move('images/productos',$nombre);
             $producto->imagen_dos=$nombre;
         }
-        if($archivo=$request->file('fichatecnicae')){
+        if($archivo=$request->file('fichatecnica')){
             $nombre=$archivo->getClientOriginalName();
             $archivo->move('fichas',$nombre);
             $producto->fichatecnica=$nombre;

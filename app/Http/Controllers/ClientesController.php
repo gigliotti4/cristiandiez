@@ -7,6 +7,9 @@ use App\Cliente;
 class ClientesController extends Controller
 {
     public function agregarCliente(Request $request){
+        $request->validate([
+            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
         $cliente= new Cliente();
         $cliente->orden=$request->orden;
         if($archivo=$request->file('imagen')){
@@ -21,6 +24,9 @@ class ClientesController extends Controller
         return $cliente;
     }
     public function actualizarCliente(Request $request,$id){
+        $request->validate([
+            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
         $cliente=Cliente::findorFail($id);
         $cliente->orden=$request->orden;
         if($archivo=$request->file('imagenedit')){

@@ -22,6 +22,8 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
     <link  href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
+    <!-- Custom arrows CSS -->
+    <link rel="stylesheet" href="{{asset('css/custom-arrows.css')}}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Cristian Diez SA</title>
@@ -313,6 +315,11 @@
         <i class="fab fa-whatsapp whatsapp-icon text-white mt-3" aria-hidden="true"></i></a>
         @endif
         @endforeach
+        <div class="d-flex justify-content-between container pb-3">
+            <p class="text-muted mb-0">© {{ date('Y') }} Cristian Diez S.R.L. Todos los derechos reservados.</p>
+            <a href="https://www.newtec.cloud" target="_blank" class="text-muted">By Newtec</a>
+        </div>
+
       </footer>
 
     <!-- Optional JavaScript -->
@@ -330,7 +337,7 @@
   $(document).ready(function(){
     function initializeSlick(selector, slidesToShow, slidesToScroll, autoplaySpeed = 3000) {
       $(selector).slick({
-        dots: true,
+        dots: false,
         infinite: true,
         arrows: true,
         speed: 300,
@@ -338,6 +345,8 @@
         slidesToScroll: slidesToScroll,
         autoplay: true,
         autoplaySpeed: autoplaySpeed,
+        prevArrow: '<button type="button" class="slick-prev"><i class="fas fa-angle-left" aria-hidden="true"></i></button>',
+        nextArrow: '<button type="button" class="slick-next"><i class="fas fa-angle-right" aria-hidden="true"></i></button>',
         responsive: [
           {
             breakpoint: 1024,
