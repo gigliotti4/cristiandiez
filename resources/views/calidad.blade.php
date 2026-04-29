@@ -69,13 +69,13 @@
             </div>
         </div>
     </div>
-    <!--Certificados
+    <!--Certificados-->
     <div class="container">
         <div class="row">
             @foreach ($certificados as $item)
                 <div class="col-md-6 mt-3 mt-md-0">
                     <div class="card">
-                        <div class="card-header shadow-sm"  style="background-color: #F8F8F8">
+                        <div class="card-header shadow-sm mb-3"  style="background-color: #F8F8F8">
                             <div style="font-family: 'Montserrat-Regular';color:#D20612;font-size:17px;"> {{$item->titulo}}
                                 <div class="float-right">
                                     <a class="link  " href="{{asset('certificados/'.$item->archivo)}}" download="">
@@ -96,5 +96,5 @@
             @endforeach
             
         </div>
-    </div>-->
+    </div>
 @endsection

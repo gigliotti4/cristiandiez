@@ -120,8 +120,12 @@ $(document).ready(function(){
         var id=$('#id').val();
         var certificado=$('#certificadoedit');
         var titulo=$('#tituloedit').val();
+        var orden=$('#ordenedit').val();
         var form= new FormData();
-        form.append('certificadoedit',certificado[0].files[0]);
+        if (certificado[0].files.length > 0) {
+            form.append('certificadoedit',certificado[0].files[0]);
+        }
+        form.append('orden',orden);
         form.append('titulo',titulo);
         form.append('_method','PUT');
         $.ajax({

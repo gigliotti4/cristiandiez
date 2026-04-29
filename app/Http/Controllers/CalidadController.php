@@ -26,7 +26,7 @@ class CalidadController extends Controller
     }
     public function agregarCertificado(Request $request){
         $request->validate([
-            'archivo' => 'required|mimes:pdf|max:5120', // Máximo 5MB
+            'certificado' => 'required|file|mimes:pdf|max:5120',
         ]);
         $certificado= new Certificado();
         $certificado->orden=$request->orden;
@@ -39,12 +39,19 @@ class CalidadController extends Controller
         $certificado->save();
     }
     public function actualizarCertificado(Request $request,$id){
-        $request->validate([
-            'archivo' => 'required|mimes:pdf|max:5120', // Máximo 5MB
-        ]);
+        $rules = [
+            'orden' => 'nullable',
+            'titulo' => 'nullable',
+        ];
+
+        if ($request->hasFile('certificadoedit')) {
+            $rules['certificadoedit'] = 'file|mimes:pdf|max:5120';
+        }
+
+        $request->validate($rules);
         $certificado=Certificado::find($id);
 
-        if($archivo=$request->file('certificadoedit')){
+        if($request->hasFile('certificadoedit') && $archivo=$request->file('certificadoedit')){
             $nombre=$request->titulo.".".$archivo->getClientOriginalExtension();
             $archivo->move('certificados',$nombre);
             $certificado->archivo=$nombre;
